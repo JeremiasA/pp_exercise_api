@@ -1,0 +1,44 @@
+one: 
+  category: one
+  product: one
+
+two:
+  category: one
+  product: two
+
+three:
+  category: two
+  product: one
+
+
+fourth:
+  category: three
+  product: three
+
+five:
+  category: four
+  product: three
+
+six:
+  category: five
+  product: five
+
+seven:
+  category: six
+  product: one
+  
+eight:
+  category: seven
+  product: six
+
+eight:
+  category: eight
+  product: four
+
+nine:
+  category: two
+  product: seven
+
+ten:
+  category: one
+  product: eight

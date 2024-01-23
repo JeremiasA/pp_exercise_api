@@ -1,0 +1,8 @@
+production:
+  :queues:
+    # 1 - Procesos internos, mejora de informacion, otros
+    # 2 - Comunicaciones con usuarios, cobros o tiempos que el usuario puede percibir como lentos
+    # 3 - Operaciones real time que afecta la cadena de produccion
+
+    - ['emails', 1]
+

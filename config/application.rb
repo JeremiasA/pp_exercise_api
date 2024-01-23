@@ -8,16 +8,35 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module PpApi
   class Application < Rails::Application
+    config.after_initialize do
+      ActiveRecord::Base.logger = Logger.new(STDOUT)
+    end
+
+    ActiveSupport::JSON.backend = 'JSONGem'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', 'concerns', '**/')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'controllers', 'concerns', '**/')]
+    config.autoload_paths += Dir[Rails.root.join('lib', '**/')]
+    config.autoload_paths += Dir[Rails.root.join('lib', 'reports', '**/')]
 
-    # Only load the plugins named here, in the order given (default is alphabetical).
+    config.middleware.insert_before ActionDispatch::ParamsParser, 'CatchJsonParseErrors'
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+
+    config.generators do |generate|
+      generate.test_framework :rspec,
+                              fixtures: true,
+                              view_specs: false,
+                              helper_specs: false,
+                              routing_specs: false,
+                              controller_specs: false,
+                              request_specs: false
+      generate.fixture_replacement :factory_bot_rails, dir: 'spec/factories'
+    end
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
@@ -34,9 +53,20 @@ module PpApi
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # CORS
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+
+        resource '*',
+                 headers: :any,
+                 methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
   end
 end

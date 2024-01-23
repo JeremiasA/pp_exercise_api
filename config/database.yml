@@ -13,8 +13,8 @@ development:
   encoding: unicode
   database: pp_api_development
   pool: 5
-  username: pp_user
-  password: <%= ENV['PP_API_DB_PASSWORD'] %>
+  username: postgres
+  password: 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -39,13 +39,13 @@ test:
   encoding: unicode
   database: pp_api_test
   pool: 5
-  username: pp_user
-  password: <%= ENV['PP_API_DB_PASSWORD'] %>
+  username: postgres
+  password: 
 
 production:
   adapter: postgresql
   encoding: unicode
   database: pp_api_production
   pool: 5
-  username: pp_user
+  username: postgres
   password: <%= ENV['APPNAME_DATABASE_PASSWORD'] %>

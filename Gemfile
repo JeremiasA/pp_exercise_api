@@ -1,31 +1,41 @@
 source 'http://rubygems.org'
 
+# rails
 gem 'rails', '3.0.20'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+# postgresql
 gem 'pg'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+gem 'strong_parameters'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'ar-audit-tracer'
 
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'faker', '~> 1.7', '>= 1.7.3'
 
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+gem 'redis', '~> 3.2', '>= 3.2.1'
 
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+gem 'bcrypt', '~> 3.1.12'
+
+gem 'jwt'
+
+gem 'rack-cors'
+
+gem 'active_model_serializers'
+
+gem 'sidekiq', '~> 3.0.0'
+
+# Build JSON APIs with ease
+# https://github.com/rails/jbuilder
+gem 'jbuilder'
+
+# Pagination
+# https://github.com/mislav/will_paginate
+gem 'will_paginate', '~> 2.3.17'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.9.1'
+  gem 'rubocop'
+  gem 'actionmailer'
+  gem 'factory_bot_rails'
+  gem 'debugger'
+end

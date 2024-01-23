@@ -1,58 +1,26 @@
 PpApi::Application.routes.draw do
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+  namespace :api do
+    namespace :v1 do
+      resources :categories, only: [:index, :show, :create, :update, :destroy]
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+      resources :products, only: [:index, :show, :create, :update, :destroy] do
+        get 'most_sold_products', on: :collection
+        get 'most_money_products', on: :collection
+      end
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+      resources :clients, only: [:index, :show, :create, :update, :destroy]
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+      resources :orders, only: [:index, :show, :create, :update, :destroy]
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+      resources :category_items, only: [:create, :destroy]
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+      resources :users, only: [:show, :create, :update, :destroy] do
+        get 'me', on: :collection
+      end
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
+      post '/auth/login', to: 'auth#login'
+    end
+  end
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  # match '*unmatched_route', :to => 'application#raise_not_found!'
 end

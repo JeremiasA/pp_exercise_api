@@ -1,0 +1,11 @@
+development:
+  mailer:
+    from: "Your Ecommerce <your-ecommerce@test.com>"
+    address: "smtp.mailgun.org"
+    port: 25
+    domain: "smtp.mailgun.org"
+    user_name: <%= ENV['EMAIL_SERVICE_USERNAME'] %> # test: postmaster@sandbox8aef774b6e62434482b295e335e1927e.mailgun.org
+    password: <%= ENV['EMAIL_SERVICE_PASSWORD'] %> # test: 97f26250621dd9765160ed5eea27db05-063062da-1c354142
+    authentication: "plain"
+    enable_starttls_auto: false
+        

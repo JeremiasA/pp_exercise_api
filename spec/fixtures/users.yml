@@ -1,0 +1,11 @@
+first: 
+ name: Juan
+ last_name: Perez 
+ email: juan_peres@email.com
+ active: true
+
+second: 
+ name: Alberto
+ last_name: Rodriguez
+ email: alberto@email.com
+ active: true

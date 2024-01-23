@@ -1,0 +1,59 @@
+one: 
+ name: Juan
+ last_name: Perez 
+ email: juan_@email.com
+ zip_code: 1234
+ address: fake street 8887
+ doc_number: 33344556
+ phone: 2344567
+ user_id: 1
+
+two: 
+ name: Alberto
+ last_name: Rodriguez
+ email: alber@email.com
+ zip_code: 1234
+ address: fake street 8887
+ doc_number: 33344556
+ phone: 2344567
+ user_id: 1
+
+three: 
+ name: Juan
+ last_name: Perez 
+ email: peres@email.com
+ zip_code: 1234
+ address: fake street 8887
+ doc_number: 33344556
+ phone: 2344567
+ user_id: 1
+
+four: 
+ name: Alberto
+ last_name: Rodriguez
+ email: fake_one@email.com
+ zip_code: 1234
+ address: fake street 8887
+ doc_number: 33344556
+ phone: 2344567
+ user_id: 1
+
+five: 
+ name: Mariana
+ last_name: Perez 
+ email: fake_two@email.com
+ zip_code: 1234
+ address: fake street 8887
+ doc_number: 33344556
+ phone: 2344567
+ user_id: 1
+
+six: 
+ name: Jose
+ last_name: Rodriguez
+ email: fake_three@email.com
+ zip_code: 1234
+ address: fake street 8887
+ doc_number: 33344556
+ phone: 2344567
+ user_id: 1

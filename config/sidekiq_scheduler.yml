@@ -1,0 +1,5 @@
+# all days at 7 a.m
+product_sells_report:
+  cron: "0 7 * * *"
+  class: ProductsSellsReportJob
+  queue: products

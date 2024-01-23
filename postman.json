@@ -1,0 +1,2350 @@
+{
+	"info": {
+		"_postman_id": "0a340c2e-f634-4d97-97e9-7a9aa1c315ac",
+		"name": "RESTful API Basics #blueprint",
+		"description": "# 🚀 Get started here\n\nThis collection guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this collection**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these request types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT and PATCH requests.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a variable called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more scripts in \"Tests\" to verify if the API works as expected and execute flows.\n    \n\n## ℹ️ Resources\n\n[Building requests](https://learning.postman.com/docs/sending-requests/requests/)  \n[Authorizing requests](https://learning.postman.com/docs/sending-requests/authorization/)  \n[Using variables](https://learning.postman.com/docs/sending-requests/variables/)  \n[Managing environments](https://learning.postman.com/docs/sending-requests/managing-environments/)  \n[Writing scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15426433",
+		"_collection_link": "https://martian-station-127287.postman.co/workspace/pp-exercise-api~2206e0cf-8b70-43fa-ac2d-f3c1f0b537d8/collection/15426433-0a340c2e-f634-4d97-97e9-7a9aa1c315ac?action=share&source=collection_link&creator=15426433"
+	},
+	"item": [
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"as\":\"nueva2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/categories/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"11323311\",\n    \"description\":\"3dswafg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\":\"3dswafg1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"nigh2t112212222\",\n    \"description\":\"3dswafg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"base_url\", \"http://localhost:3000\");"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "category_items",
+			"item": [
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"nigh2t112212222\",\n    \"description\":\"3dswafg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"nigh2t112212222\",\n    \"description\":\"3dswafg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"categories",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"base_url\", \"http://localhost:3000\");"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/1v1/products/11",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"1v1",
+								"products",
+								"11"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"product_0021211122\",\n    \"description\":\"prodcuto nuevo 2\",\n    \"title\": \"Mesa de luz 2\",\n     \"sell_price\": 125.56,\n    \"cost\": 78.44,\n    \"weight\": 88,\n    \"width\": 65,\n    \"length\":45,\n    \"height\": 77,\n    \"category_items\":[{\"category_id\":1}, {\"category_id\":2}]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\":\"3dswafg1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"nigh2t112212222\",\n    \"description\":\"3dswafg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "most_money_products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.w797lHrs1R0WUKr6PueEbleaHuGJGPFhSp2Ix95wrL8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/most_money_products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"most_money_products"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "most_mony_products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/products/most_money_products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"most_money_products"
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"1dead50a8c08e48880bc9a6451cb92b7\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.049750"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Jan 2024 05:44:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "636"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"categories\": [\n        {\n            \"category\": \"categor22ia_5\",\n            \"product_id\": \"2\",\n            \"product_price_totals\": \"502.24\"\n        },\n        {\n            \"category\": \"categor22ia_5\",\n            \"product_id\": \"1\",\n            \"product_price_totals\": \"251.12\"\n        },\n        {\n            \"category\": \"categoria_5\",\n            \"product_id\": \"2\",\n            \"product_price_totals\": \"502.24\"\n        },\n        {\n            \"category\": \"categoria_5\",\n            \"product_id\": \"1\",\n            \"product_price_totals\": \"251.12\"\n        },\n        {\n            \"category\": \"cate2gor22ia_5\",\n            \"product_id\": \"2\",\n            \"product_price_totals\": \"502.24\"\n        },\n        {\n            \"category\": \"cate2gor22ia_5\",\n            \"product_id\": \"1\",\n            \"product_price_totals\": \"251.12\"\n        },\n        {\n            \"category\": \"categor2ia_5\",\n            \"product_id\": \"2\",\n            \"product_price_totals\": \"502.24\"\n        },\n        {\n            \"category\": \"categor2ia_5\",\n            \"product_id\": \"1\",\n            \"product_price_totals\": \"251.12\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "most_sold_products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.w797lHrs1R0WUKr6PueEbleaHuGJGPFhSp2Ix95wrL8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/most_sold_products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"most_sold_products"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "most_sold_products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/products/most_sold_products",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"most_sold_products"
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"765486ea6859f92819ac13060aebbb17\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.027728"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Jan 2024 05:45:49 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "532"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"categories\": [\n        {\n            \"category\": \"categor22ia_5\",\n            \"product_id\": \"2\",\n            \"orders_count\": \"4\"\n        },\n        {\n            \"category\": \"categor22ia_5\",\n            \"product_id\": \"1\",\n            \"orders_count\": \"2\"\n        },\n        {\n            \"category\": \"categoria_5\",\n            \"product_id\": \"1\",\n            \"orders_count\": \"2\"\n        },\n        {\n            \"category\": \"categoria_5\",\n            \"product_id\": \"2\",\n            \"orders_count\": \"4\"\n        },\n        {\n            \"category\": \"cate2gor22ia_5\",\n            \"product_id\": \"2\",\n            \"orders_count\": \"4\"\n        },\n        {\n            \"category\": \"cate2gor22ia_5\",\n            \"product_id\": \"1\",\n            \"orders_count\": \"2\"\n        },\n        {\n            \"category\": \"categor2ia_5\",\n            \"product_id\": \"1\",\n            \"orders_count\": \"2\"\n        },\n        {\n            \"category\": \"categor2ia_5\",\n            \"product_id\": \"2\",\n            \"orders_count\": \"4\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"base_url\", \"http://localhost:3000\");"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "clients",
+			"item": [
+				{
+					"name": "index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clients/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan\",\n    \"last_name\":\"Perez\",\n    \"doc_number\": \"111222333\",\n     \"email\": \"dsfsd@dewsgfsdwd.com\",\n    \"phone\":\"234234243\",\n    \"zip_code\": 2000,\n    \"address\": \"Mitre 1433\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\":\"3dswafg1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"nigh2t112212222\",\n    \"description\":\"3dswafg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"base_url\", \"http://localhost:3000\");"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/orders?date_from=2024-1-10&date_to=2024-1-21",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "date_from",
+									"value": "2024-1-10"
+								},
+								{
+									"key": "date_to",
+									"value": "2024-1-21"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "created_from/ceated_to",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/orders?date_from=2024-1-10&date_to=2024-1-21",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "date_from",
+											"value": "2024-1-10"
+										},
+										{
+											"key": "date_to",
+											"value": "2024-1-21"
+										}
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"b45679f5e9850f8b8721cf6a18a5f1e9\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.053401"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 10:26:27 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7071"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 1,\n            \"code\": \"2\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 4565,\n            \"product_id\": 1,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:41:27Z\"\n        },\n        {\n            \"id\": 3,\n            \"code\": \"3\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 3,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:50:24Z\"\n        },\n        {\n            \"id\": 4,\n            \"code\": \"4\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:43Z\"\n        },\n        {\n            \"id\": 5,\n            \"code\": \"5\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:51Z\"\n        },\n        {\n            \"id\": 6,\n            \"code\": \"6\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:53Z\"\n        },\n        {\n            \"id\": 7,\n            \"code\": \"7\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:54Z\"\n        },\n        {\n            \"id\": 8,\n            \"code\": \"245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 6,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:02Z\"\n        },\n        {\n            \"id\": 9,\n            \"code\": \"6547245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:08Z\"\n        },\n        {\n            \"id\": 10,\n            \"code\": \"65472245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:10Z\"\n        },\n        {\n            \"id\": 11,\n            \"code\": \"2134\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 8,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:14Z\"\n        },\n        {\n            \"id\": 12,\n            \"code\": \"21341\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:19Z\"\n        },\n        {\n            \"id\": 13,\n            \"code\": \"213411\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:21Z\"\n        },\n        {\n            \"id\": 14,\n            \"code\": \"2134111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:22Z\"\n        },\n        {\n            \"id\": 15,\n            \"code\": \"21341111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:26Z\"\n        },\n        {\n            \"id\": 16,\n            \"code\": \"213411112\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:27Z\"\n        },\n        {\n            \"id\": 17,\n            \"code\": \"2134111122\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:30Z\"\n        },\n        {\n            \"id\": 18,\n            \"code\": \"21341111223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:31Z\"\n        },\n        {\n            \"id\": 19,\n            \"code\": \"213411112223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:34Z\"\n        },\n        {\n            \"id\": 20,\n            \"code\": \"2134111122223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:35Z\"\n        },\n        {\n            \"id\": 21,\n            \"code\": \"f2223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:43Z\"\n        },\n        {\n            \"id\": 22,\n            \"code\": \"f2ss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:49Z\"\n        },\n        {\n            \"id\": 23,\n            \"code\": \"f2sss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:50Z\"\n        },\n        {\n            \"id\": 24,\n            \"code\": \"f2sssd223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 14,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:55Z\"\n        },\n        {\n            \"id\": 25,\n            \"code\": \"f2sssd2323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 17,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:59Z\"\n        },\n        {\n            \"id\": 26,\n            \"code\": \"f2sssd24323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 15,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:04Z\"\n        },\n        {\n            \"id\": 27,\n            \"code\": \"f2sssd242323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 16,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:08Z\"\n        },\n        {\n            \"id\": 28,\n            \"code\": \"f2sssd2422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:10Z\"\n        },\n        {\n            \"id\": 29,\n            \"code\": \"f2sssd22422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 19,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:16Z\"\n        },\n        {\n            \"id\": 30,\n            \"code\": \"f2sssd22g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:19Z\"\n        },\n        {\n            \"id\": 31,\n            \"code\": \"f2sssd222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 20,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:24Z\"\n        },\n        {\n            \"id\": 32,\n            \"code\": \"f2sssd2222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 21,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:27Z\"\n        },\n        {\n            \"id\": 33,\n            \"code\": \"f2sssd22122g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 22,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:29Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "category_id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/orders?category_id=6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "category_id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"6cb2464c41b5cfdf335cf171af596d5d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.053803"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 10:31:05 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1298"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 7,\n            \"code\": \"7\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:54Z\"\n        },\n        {\n            \"id\": 6,\n            \"code\": \"6\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:53Z\"\n        },\n        {\n            \"id\": 5,\n            \"code\": \"5\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:51Z\"\n        },\n        {\n            \"id\": 4,\n            \"code\": \"4\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:43Z\"\n        },\n        {\n            \"id\": 8,\n            \"code\": \"245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 6,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:02Z\"\n        },\n        {\n            \"id\": 25,\n            \"code\": \"f2sssd2323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 17,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:59Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "client_id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/orders?client_id=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"b45679f5e9850f8b8721cf6a18a5f1e9\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.053868"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 10:32:20 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7071"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 1,\n            \"code\": \"2\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 4565,\n            \"product_id\": 1,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:41:27Z\"\n        },\n        {\n            \"id\": 3,\n            \"code\": \"3\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 3,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:50:24Z\"\n        },\n        {\n            \"id\": 4,\n            \"code\": \"4\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:43Z\"\n        },\n        {\n            \"id\": 5,\n            \"code\": \"5\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:51Z\"\n        },\n        {\n            \"id\": 6,\n            \"code\": \"6\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:53Z\"\n        },\n        {\n            \"id\": 7,\n            \"code\": \"7\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:54Z\"\n        },\n        {\n            \"id\": 8,\n            \"code\": \"245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 6,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:02Z\"\n        },\n        {\n            \"id\": 9,\n            \"code\": \"6547245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:08Z\"\n        },\n        {\n            \"id\": 10,\n            \"code\": \"65472245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:10Z\"\n        },\n        {\n            \"id\": 11,\n            \"code\": \"2134\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 8,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:14Z\"\n        },\n        {\n            \"id\": 12,\n            \"code\": \"21341\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:19Z\"\n        },\n        {\n            \"id\": 13,\n            \"code\": \"213411\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:21Z\"\n        },\n        {\n            \"id\": 14,\n            \"code\": \"2134111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:22Z\"\n        },\n        {\n            \"id\": 15,\n            \"code\": \"21341111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:26Z\"\n        },\n        {\n            \"id\": 16,\n            \"code\": \"213411112\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:27Z\"\n        },\n        {\n            \"id\": 17,\n            \"code\": \"2134111122\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:30Z\"\n        },\n        {\n            \"id\": 18,\n            \"code\": \"21341111223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:31Z\"\n        },\n        {\n            \"id\": 19,\n            \"code\": \"213411112223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:34Z\"\n        },\n        {\n            \"id\": 20,\n            \"code\": \"2134111122223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:35Z\"\n        },\n        {\n            \"id\": 21,\n            \"code\": \"f2223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:43Z\"\n        },\n        {\n            \"id\": 22,\n            \"code\": \"f2ss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:49Z\"\n        },\n        {\n            \"id\": 23,\n            \"code\": \"f2sss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:50Z\"\n        },\n        {\n            \"id\": 24,\n            \"code\": \"f2sssd223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 14,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:55Z\"\n        },\n        {\n            \"id\": 25,\n            \"code\": \"f2sssd2323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 17,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:59Z\"\n        },\n        {\n            \"id\": 26,\n            \"code\": \"f2sssd24323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 15,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:04Z\"\n        },\n        {\n            \"id\": 27,\n            \"code\": \"f2sssd242323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 16,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:08Z\"\n        },\n        {\n            \"id\": 28,\n            \"code\": \"f2sssd2422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:10Z\"\n        },\n        {\n            \"id\": 29,\n            \"code\": \"f2sssd22422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 19,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:16Z\"\n        },\n        {\n            \"id\": 30,\n            \"code\": \"f2sssd22g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:19Z\"\n        },\n        {\n            \"id\": 31,\n            \"code\": \"f2sssd222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 20,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:24Z\"\n        },\n        {\n            \"id\": 32,\n            \"code\": \"f2sssd2222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 21,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:27Z\"\n        },\n        {\n            \"id\": 33,\n            \"code\": \"f2sssd22122g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 22,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:29Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "user_id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/orders?admin_id=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "admin_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"1295a27c7a489199efc6419b8eb70ae5\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.115426"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 10:34:52 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6860"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 3,\n            \"code\": \"3\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 3,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:50:24Z\"\n        },\n        {\n            \"id\": 4,\n            \"code\": \"4\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:43Z\"\n        },\n        {\n            \"id\": 5,\n            \"code\": \"5\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:51Z\"\n        },\n        {\n            \"id\": 6,\n            \"code\": \"6\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:53Z\"\n        },\n        {\n            \"id\": 7,\n            \"code\": \"7\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:54Z\"\n        },\n        {\n            \"id\": 8,\n            \"code\": \"245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 6,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:02Z\"\n        },\n        {\n            \"id\": 9,\n            \"code\": \"6547245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:08Z\"\n        },\n        {\n            \"id\": 10,\n            \"code\": \"65472245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:10Z\"\n        },\n        {\n            \"id\": 11,\n            \"code\": \"2134\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 8,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:14Z\"\n        },\n        {\n            \"id\": 12,\n            \"code\": \"21341\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:19Z\"\n        },\n        {\n            \"id\": 13,\n            \"code\": \"213411\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:21Z\"\n        },\n        {\n            \"id\": 14,\n            \"code\": \"2134111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:22Z\"\n        },\n        {\n            \"id\": 15,\n            \"code\": \"21341111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:26Z\"\n        },\n        {\n            \"id\": 16,\n            \"code\": \"213411112\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:27Z\"\n        },\n        {\n            \"id\": 17,\n            \"code\": \"2134111122\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:30Z\"\n        },\n        {\n            \"id\": 18,\n            \"code\": \"21341111223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:31Z\"\n        },\n        {\n            \"id\": 19,\n            \"code\": \"213411112223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:34Z\"\n        },\n        {\n            \"id\": 20,\n            \"code\": \"2134111122223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:35Z\"\n        },\n        {\n            \"id\": 21,\n            \"code\": \"f2223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:43Z\"\n        },\n        {\n            \"id\": 22,\n            \"code\": \"f2ss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:49Z\"\n        },\n        {\n            \"id\": 23,\n            \"code\": \"f2sss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:50Z\"\n        },\n        {\n            \"id\": 24,\n            \"code\": \"f2sssd223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 14,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:55Z\"\n        },\n        {\n            \"id\": 26,\n            \"code\": \"f2sssd24323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 15,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:04Z\"\n        },\n        {\n            \"id\": 27,\n            \"code\": \"f2sssd242323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 16,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:08Z\"\n        },\n        {\n            \"id\": 25,\n            \"code\": \"f2sssd2323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 17,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:59Z\"\n        },\n        {\n            \"id\": 28,\n            \"code\": \"f2sssd2422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:10Z\"\n        },\n        {\n            \"id\": 30,\n            \"code\": \"f2sssd22g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:19Z\"\n        },\n        {\n            \"id\": 29,\n            \"code\": \"f2sssd22422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 19,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:16Z\"\n        },\n        {\n            \"id\": 31,\n            \"code\": \"f2sssd222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 20,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:24Z\"\n        },\n        {\n            \"id\": 32,\n            \"code\": \"f2sssd2222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 21,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:27Z\"\n        },\n        {\n            \"id\": 33,\n            \"code\": \"f2sssd22122g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 22,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:29Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clients/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"code\":\"3\",\n           \"status\":\"new\",\n           \"payment_method\":\"bank_transfer\",\n           \"shipping_method\":\"door_to_door\",\n           \"shipping_price\":\"1234\",\n           \"total_price\":\"4565\",\n           \"product_id\":\"3\",\n           \"client_id\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\":\"3dswafg1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"nigh2t112212222\",\n    \"description\":\"3dswafg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"base_url\", \"http://localhost:3000\");"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "index",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/orders?date_from=2024-1-10&date_to=2024-1-21",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "date_from",
+									"value": "2024-1-10"
+								},
+								{
+									"key": "date_to",
+									"value": "2024-1-21"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "created_from/ceated_to",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/orders?date_from=2024-1-10&date_to=2024-1-21",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "date_from",
+											"value": "2024-1-10"
+										},
+										{
+											"key": "date_to",
+											"value": "2024-1-21"
+										}
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"b45679f5e9850f8b8721cf6a18a5f1e9\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.053401"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 10:26:27 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7071"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 1,\n            \"code\": \"2\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 4565,\n            \"product_id\": 1,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:41:27Z\"\n        },\n        {\n            \"id\": 3,\n            \"code\": \"3\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 3,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:50:24Z\"\n        },\n        {\n            \"id\": 4,\n            \"code\": \"4\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:43Z\"\n        },\n        {\n            \"id\": 5,\n            \"code\": \"5\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:51Z\"\n        },\n        {\n            \"id\": 6,\n            \"code\": \"6\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:53Z\"\n        },\n        {\n            \"id\": 7,\n            \"code\": \"7\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:54Z\"\n        },\n        {\n            \"id\": 8,\n            \"code\": \"245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 6,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:02Z\"\n        },\n        {\n            \"id\": 9,\n            \"code\": \"6547245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:08Z\"\n        },\n        {\n            \"id\": 10,\n            \"code\": \"65472245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:10Z\"\n        },\n        {\n            \"id\": 11,\n            \"code\": \"2134\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 8,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:14Z\"\n        },\n        {\n            \"id\": 12,\n            \"code\": \"21341\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:19Z\"\n        },\n        {\n            \"id\": 13,\n            \"code\": \"213411\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:21Z\"\n        },\n        {\n            \"id\": 14,\n            \"code\": \"2134111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:22Z\"\n        },\n        {\n            \"id\": 15,\n            \"code\": \"21341111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:26Z\"\n        },\n        {\n            \"id\": 16,\n            \"code\": \"213411112\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:27Z\"\n        },\n        {\n            \"id\": 17,\n            \"code\": \"2134111122\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:30Z\"\n        },\n        {\n            \"id\": 18,\n            \"code\": \"21341111223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:31Z\"\n        },\n        {\n            \"id\": 19,\n            \"code\": \"213411112223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:34Z\"\n        },\n        {\n            \"id\": 20,\n            \"code\": \"2134111122223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:35Z\"\n        },\n        {\n            \"id\": 21,\n            \"code\": \"f2223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:43Z\"\n        },\n        {\n            \"id\": 22,\n            \"code\": \"f2ss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:49Z\"\n        },\n        {\n            \"id\": 23,\n            \"code\": \"f2sss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:50Z\"\n        },\n        {\n            \"id\": 24,\n            \"code\": \"f2sssd223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 14,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:55Z\"\n        },\n        {\n            \"id\": 25,\n            \"code\": \"f2sssd2323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 17,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:59Z\"\n        },\n        {\n            \"id\": 26,\n            \"code\": \"f2sssd24323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 15,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:04Z\"\n        },\n        {\n            \"id\": 27,\n            \"code\": \"f2sssd242323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 16,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:08Z\"\n        },\n        {\n            \"id\": 28,\n            \"code\": \"f2sssd2422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:10Z\"\n        },\n        {\n            \"id\": 29,\n            \"code\": \"f2sssd22422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 19,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:16Z\"\n        },\n        {\n            \"id\": 30,\n            \"code\": \"f2sssd22g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:19Z\"\n        },\n        {\n            \"id\": 31,\n            \"code\": \"f2sssd222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 20,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:24Z\"\n        },\n        {\n            \"id\": 32,\n            \"code\": \"f2sssd2222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 21,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:27Z\"\n        },\n        {\n            \"id\": 33,\n            \"code\": \"f2sssd22122g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 22,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:29Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "category_id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/orders?category_id=6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "category_id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"6cb2464c41b5cfdf335cf171af596d5d\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.053803"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 10:31:05 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1298"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 7,\n            \"code\": \"7\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:54Z\"\n        },\n        {\n            \"id\": 6,\n            \"code\": \"6\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:53Z\"\n        },\n        {\n            \"id\": 5,\n            \"code\": \"5\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:51Z\"\n        },\n        {\n            \"id\": 4,\n            \"code\": \"4\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:43Z\"\n        },\n        {\n            \"id\": 8,\n            \"code\": \"245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 6,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:02Z\"\n        },\n        {\n            \"id\": 25,\n            \"code\": \"f2sssd2323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 17,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:59Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "client_id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/orders?client_id=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"b45679f5e9850f8b8721cf6a18a5f1e9\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.053868"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 10:32:20 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7071"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 1,\n            \"code\": \"2\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 4565,\n            \"product_id\": 1,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:41:27Z\"\n        },\n        {\n            \"id\": 3,\n            \"code\": \"3\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 3,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:50:24Z\"\n        },\n        {\n            \"id\": 4,\n            \"code\": \"4\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:43Z\"\n        },\n        {\n            \"id\": 5,\n            \"code\": \"5\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:51Z\"\n        },\n        {\n            \"id\": 6,\n            \"code\": \"6\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:53Z\"\n        },\n        {\n            \"id\": 7,\n            \"code\": \"7\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:54Z\"\n        },\n        {\n            \"id\": 8,\n            \"code\": \"245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 6,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:02Z\"\n        },\n        {\n            \"id\": 9,\n            \"code\": \"6547245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:08Z\"\n        },\n        {\n            \"id\": 10,\n            \"code\": \"65472245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:10Z\"\n        },\n        {\n            \"id\": 11,\n            \"code\": \"2134\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 8,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:14Z\"\n        },\n        {\n            \"id\": 12,\n            \"code\": \"21341\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:19Z\"\n        },\n        {\n            \"id\": 13,\n            \"code\": \"213411\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:21Z\"\n        },\n        {\n            \"id\": 14,\n            \"code\": \"2134111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:22Z\"\n        },\n        {\n            \"id\": 15,\n            \"code\": \"21341111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:26Z\"\n        },\n        {\n            \"id\": 16,\n            \"code\": \"213411112\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:27Z\"\n        },\n        {\n            \"id\": 17,\n            \"code\": \"2134111122\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:30Z\"\n        },\n        {\n            \"id\": 18,\n            \"code\": \"21341111223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:31Z\"\n        },\n        {\n            \"id\": 19,\n            \"code\": \"213411112223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:34Z\"\n        },\n        {\n            \"id\": 20,\n            \"code\": \"2134111122223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:35Z\"\n        },\n        {\n            \"id\": 21,\n            \"code\": \"f2223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:43Z\"\n        },\n        {\n            \"id\": 22,\n            \"code\": \"f2ss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:49Z\"\n        },\n        {\n            \"id\": 23,\n            \"code\": \"f2sss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:50Z\"\n        },\n        {\n            \"id\": 24,\n            \"code\": \"f2sssd223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 14,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:55Z\"\n        },\n        {\n            \"id\": 25,\n            \"code\": \"f2sssd2323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 17,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:59Z\"\n        },\n        {\n            \"id\": 26,\n            \"code\": \"f2sssd24323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 15,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:04Z\"\n        },\n        {\n            \"id\": 27,\n            \"code\": \"f2sssd242323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 16,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:08Z\"\n        },\n        {\n            \"id\": 28,\n            \"code\": \"f2sssd2422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:10Z\"\n        },\n        {\n            \"id\": 29,\n            \"code\": \"f2sssd22422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 19,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:16Z\"\n        },\n        {\n            \"id\": 30,\n            \"code\": \"f2sssd22g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:19Z\"\n        },\n        {\n            \"id\": 31,\n            \"code\": \"f2sssd222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 20,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:24Z\"\n        },\n        {\n            \"id\": 32,\n            \"code\": \"f2sssd2222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 21,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:27Z\"\n        },\n        {\n            \"id\": 33,\n            \"code\": \"f2sssd22122g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 22,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:29Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "admin_id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/orders?admin_id=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "admin_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK ",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Etag",
+									"value": "\"1295a27c7a489199efc6419b8eb70ae5\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Ua-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.115426"
+								},
+								{
+									"key": "Server",
+									"value": "WEBrick/1.3.1 (Ruby/1.9.3/2014-11-13)"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Jan 2024 10:34:52 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6860"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"id\": 3,\n            \"code\": \"3\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 3,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T20:50:24Z\"\n        },\n        {\n            \"id\": 4,\n            \"code\": \"4\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:43Z\"\n        },\n        {\n            \"id\": 5,\n            \"code\": \"5\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:51Z\"\n        },\n        {\n            \"id\": 6,\n            \"code\": \"6\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:53Z\"\n        },\n        {\n            \"id\": 7,\n            \"code\": \"7\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 5,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:03:54Z\"\n        },\n        {\n            \"id\": 8,\n            \"code\": \"245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 6,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:02Z\"\n        },\n        {\n            \"id\": 9,\n            \"code\": \"6547245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:08Z\"\n        },\n        {\n            \"id\": 10,\n            \"code\": \"65472245\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 7,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:10Z\"\n        },\n        {\n            \"id\": 11,\n            \"code\": \"2134\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 8,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:14Z\"\n        },\n        {\n            \"id\": 12,\n            \"code\": \"21341\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:19Z\"\n        },\n        {\n            \"id\": 13,\n            \"code\": \"213411\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:21Z\"\n        },\n        {\n            \"id\": 14,\n            \"code\": \"2134111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 9,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:22Z\"\n        },\n        {\n            \"id\": 15,\n            \"code\": \"21341111\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:26Z\"\n        },\n        {\n            \"id\": 16,\n            \"code\": \"213411112\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:27Z\"\n        },\n        {\n            \"id\": 17,\n            \"code\": \"2134111122\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:30Z\"\n        },\n        {\n            \"id\": 18,\n            \"code\": \"21341111223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 10,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:31Z\"\n        },\n        {\n            \"id\": 19,\n            \"code\": \"213411112223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:34Z\"\n        },\n        {\n            \"id\": 20,\n            \"code\": \"2134111122223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 11,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:35Z\"\n        },\n        {\n            \"id\": 21,\n            \"code\": \"f2223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:43Z\"\n        },\n        {\n            \"id\": 22,\n            \"code\": \"f2ss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:49Z\"\n        },\n        {\n            \"id\": 23,\n            \"code\": \"f2sss223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 13,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:50Z\"\n        },\n        {\n            \"id\": 24,\n            \"code\": \"f2sssd223\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 14,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:55Z\"\n        },\n        {\n            \"id\": 26,\n            \"code\": \"f2sssd24323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 15,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:04Z\"\n        },\n        {\n            \"id\": 27,\n            \"code\": \"f2sssd242323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 16,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:08Z\"\n        },\n        {\n            \"id\": 25,\n            \"code\": \"f2sssd2323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 17,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:04:59Z\"\n        },\n        {\n            \"id\": 28,\n            \"code\": \"f2sssd2422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:10Z\"\n        },\n        {\n            \"id\": 30,\n            \"code\": \"f2sssd22g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 18,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:19Z\"\n        },\n        {\n            \"id\": 29,\n            \"code\": \"f2sssd22422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 19,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:16Z\"\n        },\n        {\n            \"id\": 31,\n            \"code\": \"f2sssd222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 20,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:24Z\"\n        },\n        {\n            \"id\": 32,\n            \"code\": \"f2sssd2222g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 21,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:27Z\"\n        },\n        {\n            \"id\": 33,\n            \"code\": \"f2sssd22122g422323\",\n            \"status\": \"new\",\n            \"payment_method\": \"bank_transfer\",\n            \"shipping_method\": \"door_to_door\",\n            \"shipping_price\": 1234,\n            \"total_price\": 1359.56,\n            \"product_id\": 22,\n            \"client_id\": 1,\n            \"created_at\": \"2024-01-20T22:05:29Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clients/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"code\":\"3\",\n           \"status\":\"new\",\n           \"payment_method\":\"bank_transfer\",\n           \"shipping_method\":\"door_to_door\",\n           \"shipping_price\":\"1234\",\n           \"total_price\":\"4565\",\n           \"product_id\":\"3\",\n           \"client_id\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\":\"3dswafg1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "16bbdd8b8bdc2c69d680e0cff22b2e08be76ee0d1e16fafe9f30a4edf10df07af39ef769728fe53b2eaaa066a11e001ac62d87d3e62242be1be5d9053c89eabe",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"nigh2t112212222\",\n    \"description\":\"3dswafg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"base_url\", \"http://localhost:3000\");"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1",
+			"disabled": true
+		},
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		}
+	]
+}

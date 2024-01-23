@@ -1,0 +1,95 @@
+one:
+ title: product one
+ code: prod_001
+ sell_price: 1234
+ description: product one description
+ cost: 123
+ weight: 100
+ width: 100
+ length: 100
+ height: 100
+ user: one
+
+two:
+ title: product two
+ code: prod_002
+ sell_price: 7765
+ description: product two description
+ cost: 123
+ weight: 100
+ width: 100
+ length: 100
+ height: 100
+ user: one
+
+three:
+ title: product three
+ code: prod_003
+ sell_price: 123
+ description: product three description
+ cost: 12
+ weight: 100
+ width: 100
+ length: 100
+ height: 100
+ user: one
+
+fourth:
+ title: product fourth
+ code: prod_004
+ sell_price: 1988
+ description: product fourth description
+ cost: 778
+ weight: 100
+ width: 100
+ length: 100
+ height: 100
+ user: one
+
+five:
+ title: product five
+ code: prod_005
+ sell_price: 1234
+ description: product five description
+ cost: 123
+ weight: 100
+ width: 100
+ length: 100
+ height: 100
+ user: two
+
+six:
+ title: product six
+ code: prod_006
+ sell_price: 7765
+ description: product six description
+ cost: 123
+ weight: 100
+ width: 100
+ length: 100
+ height: 100
+ user: two
+
+seven:
+ title: product seven
+ code: prod_007
+ sell_price: 123
+ description: product seven description
+ cost: 12
+ weight: 100
+ width: 100
+ length: 100
+ height: 100
+ user: two
+
+eight:
+ title: product eight
+ code: prod_008
+ sell_price: 1988
+ description: product eight description
+ cost: 778
+ weight: 100
+ width: 100
+ length: 100
+ height: 100
+ user: two
